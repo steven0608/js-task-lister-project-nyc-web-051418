@@ -15,16 +15,17 @@ newList=selectList.options[selectList.selectedIndex].innerText
   var task=new Task(newTaskDesc,newTaskProi,newList)
   var documentList = document.getElementById("lists")
 
-    var taskListHTML = `<div id=${task.name}Button>
-      <h2>${task.name}
-        <button data-title=${task.name} class="delete-list">
-          X
-        </button>
-      </h2>
-      <ul id="taskLists">
-
-      </ul>
-    </div>`
+    // var taskListHTML = `<div id=${task.name}Button>
+    //   <h2>${task.name}
+    //     <button data-title=${task.name} class="delete-list">
+    //       X
+    //     </button>
+    //   </h2>
+    //   <ul id="taskLists">
+    //
+    //   </ul>
+    // </div>`
+    documentList.innerHTML= " "
     store.lists.forEach(list=>{
       var taskList=`<div id=${list.name}Button>
         <h2>${list.name}
@@ -32,17 +33,18 @@ newList=selectList.options[selectList.selectedIndex].innerText
             X
           </button>
         </h2>
-        <ul id="taskLists">
+        <ul id=${list.name}>
 
         </ul>
       </div>`
       documentList.innerHTML += taskList
+      // debugger;
     })
       // documentList.innerHTML = taskListHTML;
       // store.lists.find(list=>{debugger;})
 
-      document.getElementById("taskLists").innerHTML =" "
-debugger;
+      // document.getElementById("taskLists").innerHTML =" "
+// debugger;
       store.tasks.forEach(function (task) {
 
           var li=`<li>
@@ -53,7 +55,9 @@ debugger;
           <br>
           Priority: ${task.priority}
         </li>`
-        document.getElementById("taskLists").innerHTML +=li
+// debugger;
+        var taskListTest=document.getElementById(`${task.name}`).innerHTML +=li
+
       })
 
 })
