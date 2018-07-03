@@ -46,7 +46,7 @@ newList=selectList.options[selectList.selectedIndex].innerText
       // document.getElementById("taskLists").innerHTML =" "
 // debugger;
       store.tasks.forEach(function (task) {
-
+// debugger;
           var li=`<li>
           Task: ${task.description}
           <button data-list-title=${task.name} data-task-name=${task.description} class="delete-task">
@@ -56,7 +56,7 @@ newList=selectList.options[selectList.selectedIndex].innerText
           Priority: ${task.priority}
         </li>`
 // debugger;
-        var taskListTest=document.getElementById(`${task.name}`).innerHTML +=li
+        document.getElementById(task.name).innerHTML +=li
 
       })
 
@@ -87,5 +87,6 @@ const options = document.createElement("OPTION");
 
 })
 
+debugger;
 
 });
