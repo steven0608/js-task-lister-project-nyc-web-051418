@@ -12,6 +12,7 @@ class List{
 var taskId=0
 class Task {
   constructor(description,priority,list) {
+    this.id = ++taskId
     this.name = list
     this.description=description
     this.priority=priority

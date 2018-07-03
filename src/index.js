@@ -29,7 +29,7 @@ newList=selectList.options[selectList.selectedIndex].innerText
     store.lists.forEach(list=>{
       var taskList=`<div id=${list.name}Button>
         <h2>${list.name}
-          <button data-title=${list.name} class="delete-list">
+          <button id=${list.name}Delete data-title=${list.name} class="delete-list">
             X
           </button>
         </h2>
@@ -46,10 +46,10 @@ newList=selectList.options[selectList.selectedIndex].innerText
       // document.getElementById("taskLists").innerHTML =" "
 // debugger;
       store.tasks.forEach(function (task) {
-// debugger;
-          var li=`<li>
+        // debugger;
+          var li=`<li class=${task.name}+${task.description}+${task.priority}+${task.id}>
           Task: ${task.description}
-          <button data-list-title=${task.name} data-task-name=${task.description} class="delete-task">
+          <button id=${task.name}+${task.description}+${task.priority}+${task.id} data-list-title=${task.name} data-task-name=${task.description} class="delete-task">
               X
           </button>
           <br>
@@ -57,6 +57,38 @@ newList=selectList.options[selectList.selectedIndex].innerText
         </li>`
 // debugger;
         document.getElementById(task.name).innerHTML +=li
+
+      })
+
+      store.lists.forEach(function (list) {
+        console.log("i am in")
+        var listButton=document.getElementById(`${list.name}`+"Button")
+        var listDelete=document.getElementById(`${list.name}`+"Delete")
+        // debugger;
+
+        listDelete.addEventListener("click",function (event) {
+          event.preventDefault()
+          listButton.remove()
+
+
+    })
+    // list={}
+    // debugger;
+      })
+
+      store.tasks.forEach(function (task) {
+        console.log("i am in the list")
+        // debugger;
+        var listButton=document.getElementsByClassName(`${task.name}+${task.description}+${task.priority}+${task.id}`)[0]
+        var listDelete=document.getElementById(`${task.name}+${task.description}+${task.priority}+${task.id}`)
+        // debugger;
+
+        listDelete.addEventListener("click",function (event) {
+          event.preventDefault()
+          listButton.remove()
+
+
+    })
 
       })
 
@@ -87,6 +119,7 @@ const options = document.createElement("OPTION");
 
 })
 
-debugger;
+
+// debugger;
 
 });
